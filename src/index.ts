@@ -35,6 +35,15 @@ class TodoApp {
     return false;
   }
 
+  deleteTodo(id: number): boolean {
+    const index = this.todos.findIndex(t => t.id === id);
+    if (index !== -1) {
+      this.todos.splice(index, 1);
+      return true;
+    }
+    return false;
+  }
+
   getTodoCount(): number {
     return this.todos.length;
   }
