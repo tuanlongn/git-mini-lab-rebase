@@ -1,0 +1,18 @@
+{
+  "name": "todo-app-rebase-demo",
+  "version": "1.0.0",
+  "description": "TypeScript Todo App for Git Rebase Conflict Demo",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "keywords": ["typescript", "todo", "git", "rebase", "demo"],
+  "author": "KAOPIZ Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
