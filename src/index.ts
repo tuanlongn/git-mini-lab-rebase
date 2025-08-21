@@ -46,8 +46,17 @@ class TodoApp {
     return false;
   }
 
+  getTodosByCategory(category: string): Todo[] {
+    return this.todos.filter(todo => todo.category === category);
+  }
+
   getTodoCount(): number {
     return this.todos.length;
+  }
+
+  getCategoryCount(): number {
+    const categories = new Set(this.todos.map(todo => todo.category));
+    return categories.size;
   }
 }
 
