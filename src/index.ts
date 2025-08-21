@@ -4,6 +4,7 @@ interface Todo {
   id: number;
   title: string;
   completed: boolean;
+  category: string;
   createdAt: Date;
 }
 
@@ -11,11 +12,12 @@ class TodoApp {
   private todos: Todo[] = [];
   private nextId: number = 1;
 
-  addTodo(title: string): Todo {
+  addTodo(title: string, category: string = 'general'): Todo {
     const todo: Todo = {
       id: this.nextId++,
       title,
       completed: false,
+      category,
       createdAt: new Date()
     };
     this.todos.push(todo);
@@ -53,13 +55,14 @@ class TodoApp {
 const app = new TodoApp();
 
 console.log('=== Todo App Demo ===');
-app.addTodo('Learn TypeScript');
-app.addTodo('Practice Git Rebase');
-app.addTodo('Resolve Merge Conflicts');
+app.addTodo('Learn TypeScript', 'learning');
+app.addTodo('Practice Git Rebase', 'development');
+app.addTodo('Resolve Merge Conflicts', 'development');
+app.addTodo('Write Tests', 'testing');
 
 console.log('\nAll Todos:');
 app.listTodos().forEach(todo => {
-  console.log(`${todo.id}. [${todo.completed ? 'x' : ' '}] ${todo.title}`);
+  console.log(`${todo.id}. [${todo.completed ? 'x' : ' '}] ${todo.title} [${todo.category}]`);
 });
 
 console.log(`\nTotal todos: ${app.getTodoCount()}`);
@@ -68,7 +71,7 @@ console.log(`\nTotal todos: ${app.getTodoCount()}`);
 app.toggleTodo(1);
 console.log('\nAfter completing first todo:');
 app.listTodos().forEach(todo => {
-  console.log(`${todo.id}. [${todo.completed ? 'x' : ' '}] ${todo.title}`);
+  console.log(`${todo.id}. [${todo.completed ? 'x' : ' '}] ${todo.title} [${todo.category}]`);
 });
 
 export { TodoApp, Todo };
